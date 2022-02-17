@@ -12,6 +12,7 @@ import { direction, color, command } from './app-enum';
 })
 export class PawnPageComponent implements OnInit {
 
+//Variable declearation
   public cmdOutput: string = '';
   public arrayCmd: Array<command> = [];
   public xPos: any = 0;
@@ -34,7 +35,7 @@ export class PawnPageComponent implements OnInit {
     } else if (this.xPos === null) {
     }
   }
-
+/*getter Method*/
   get getEnumDirectionValue() {
     let keys = Object.keys(direction);
     let values = Object.values(direction);
@@ -47,7 +48,6 @@ export class PawnPageComponent implements OnInit {
     }
     stringCat = stringCat.substring(0, stringCat.length - 1);
     stringCat += "]"
-    //console.log(stringCat);
     directionArray = JSON.parse(stringCat);
     return directionArray;
   }
@@ -77,6 +77,8 @@ export class PawnPageComponent implements OnInit {
       return false;
     }
   }
+/*getter Method*/
+/*validationChecking*/
   onClrSubmit() {
     if (this.selectedColor === 'null') {
       this.hasClrValue = false;
@@ -103,6 +105,8 @@ export class PawnPageComponent implements OnInit {
     }
     return true;
   }
+/*validationChecking*/
+/*Place, move, left, right, report Pawn*/
   place() {
     this.onClrSubmit();
     this.onDirSubmit();
@@ -115,6 +119,7 @@ export class PawnPageComponent implements OnInit {
       }
     }
   }
+
   move() {
     if (!!this.checkPlace) {
       if (this.moveCounter == 0 && parseInt(this.moveInput) > 2) {
@@ -147,51 +152,12 @@ export class PawnPageComponent implements OnInit {
       this.output = `<p class="alert alert-primary" role="alert">${this.pawnService.report(this.pawn)}</p>`;
     }
   }
+/*Place, move, left, right, report Pawn*/
+
+/*form activities*/
   submit(val: any) {
 
   }
-  /*executeCommand() {
-    let splitCommand = this.commandInt.split(" ");
-    let checkPlaceCmd =
-    this.arrayCmd.push(this.helperService.parseCommand(splitCommand[0]));
-    console.log(this.arrayCmd);
-    if (this.arrayCmd.includes(command.PLACE)) {
-      if(!!this.isValidate){
-        this.cmdOutput = '';
-        this.isValidate = false;
-      }
-      this.cmdOutput += "<p>"+splitCommand+"</p>";
-      switch (this.helperService.parseCommand(splitCommand[0])) {
-        case command.PLACE:
-          let details = splitCommand[1].split(",");
-          this.pawn = this.pawnService.place(parseInt(details[0]), parseInt(details[1]), this.helperService.parseDirection(details[2]), this.helperService.parseColor(details[3]));
-          break;
-        case command.MOVE:
-          if(this.moveCounter == 0 && parseInt(splitCommand[1]) > 2){
-            this.cmdOutput = "<p>Wrong Move</p>";
-          }else{
-            this.pawnService.move(this.pawn, splitCommand.length > 1 ? parseInt(splitCommand[1]) : 1);
-            ++this.moveCounter;
-          }
-          break;
-
-        case command.LEFT:
-          this.pawnService.left(this.pawn);
-          break;
-
-        case command.RIGHT:
-          this.pawnService.right(this.pawn);
-          break;
-
-        case command.REPORT:
-          this.output = this.pawnService.report(this.pawn);
-          break;
-      }
-    }else{
-      this.cmdOutput = "<p>Please PLACE the pawn before executing other commands.</p>";
-      this.isValidate = true;
-    }
-  };*/
 
   clear() {
     this.xPos = 0;
@@ -212,5 +178,5 @@ export class PawnPageComponent implements OnInit {
     this.output = '';
     this.placeCount = 0;
   }
-
+/*form activities*/
 }

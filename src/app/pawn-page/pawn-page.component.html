@@ -8,57 +8,58 @@
         <div class="row">
             <div class="form-outline col-md-3 col-lg-3 col-sm-3 col-xs-3 mb-4">
                 <label class="form-label" for="form3Example1cg">x Cordinate:</label>
-                <input required type="number" id="xPos" [(ngModel)]="xPos" name="xPos" #nameX="ngModel" class="form-control form-control-lg" min="0"
-                    max="7"/>
-                    <div class="alert alert-danger" *ngIf="!onTextXChange && (nameX.touched && !nameX.valid)">
-                            <div *ngIf="nameX.errors">x cordinate is required.</div>
-                          </div>
+                <input required type="number" id="xPos" [(ngModel)]="xPos" name="xPos" #nameX="ngModel"
+                    class="form-control form-control-lg" min="0" max="7" />
+                <div class="alert alert-danger" *ngIf="!onTextXChange && (nameX.touched && !nameX.valid)">
+                    <div *ngIf="nameX.errors">x cordinate is required.</div>
+                </div>
             </div>
             <div class="form-outline col-md-3 col-lg-3 col-sm-3 col-xs-3 mb-4">
                 <label class="form-label" for="form3Example1cg">y Cordinate:</label>
-                <input required type="number" id="yPos" [(ngModel)]="yPos" name="yPos" #nameY="ngModel" class="form-control form-control-lg"  min="0"
-                    max="7" />
-                    <div class="alert alert-danger" *ngIf="!onTextYChange && (nameY.touched && !nameY.valid)">
-                            <div *ngIf="nameY.errors">y cordinate is required.</div>
-                          </div>
+                <input required type="number" id="yPos" [(ngModel)]="yPos" name="yPos" #nameY="ngModel"
+                    class="form-control form-control-lg" min="0" max="7" />
+                <div class="alert alert-danger" *ngIf="!onTextYChange && (nameY.touched && !nameY.valid)">
+                    <div *ngIf="nameY.errors">y cordinate is required.</div>
+                </div>
             </div>
             <div class="form-outline col-md-3 col-lg-3 col-sm-3 col-xs-3 mb-4">
                 <label class="form-label" for="form3Example1cg">Direction:</label>
-                <select id="selectedDirection" name="selectedDirection"  #nameDir="ngModel" class="form-control form-control-lg" [(ngModel)]="selectedDirection"
-                    name="selectedDirection"  (change)="onDirSubmit();" required >
+                <select id="selectedDirection" name="selectedDirection" #nameDir="ngModel"
+                    class="form-control form-control-lg" [(ngModel)]="selectedDirection" name="selectedDirection"
+                    (change)="onDirSubmit();" required>
                     <option [ngValue]="'null'" [disabled]="true">Select</option>
                     <ng-container *ngFor="let objDir of getEnumDirectionValue">
                         <option [value]="objDir.value">{{objDir.value}}</option>
                     </ng-container>
                 </select>
                 <div class="alert alert-danger" *ngIf="!hasDirValue && nameDir.value">
-                        <div>Please select the direction.</div>
-                      </div>
+                    <div>Please select the direction.</div>
+                </div>
             </div>
             <div class="form-outline col-md-3 col-lg-3 col-sm-3 col-xs-3 mb-4">
                 <label class="form-label" for="form3Example1cg">Color:</label>
                 <select id="selectedColor" class="form-control form-control-lg" [(ngModel)]="selectedColor"
-                    name="selectedColor"  #nameClr="ngModel" (change)="onClrSubmit();" required>
+                    name="selectedColor" #nameClr="ngModel" (change)="onClrSubmit();" required>
                     <option [ngValue]="'null'" [disabled]="true">Select</option>
                     <ng-container *ngFor="let objClr of getEnumColorValue">
                         <option [value]="objClr.value">{{objClr.value}}</option>
                     </ng-container>
                 </select>
                 <div class="alert alert-danger" *ngIf="!hasClrValue && nameClr.value">
-                        <div>Please select the color.</div>
-                      </div>
+                    <div>Please select the color.</div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="form-outline col-md-12 col-lg-12 col-sm-12 col-xs-12 mb-4">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button col-md-3" class="btn btn-outline-primary mr-1" (click)="place()" #btn>Place</button>
+                    <button type="button col-md-3" class="btn btn-outline-primary mr-1" (click)="place()"
+                        #btn>Place</button>
                     <button type="button col-md-3" class="btn btn-outline-primary mr-1" (click)="left()">Left</button>
                     <button type="button col-md-3" class="btn btn-outline-primary mr-1" (click)="right()">Right</button>
                     <div class="input-group-append  btn-group">
-                        <input required type="number" class="form-control"  id="moveInput" [(ngModel)]="moveInput"
-                        name="moveInput"  #name="ngModel" value="1"
-                            min="1" max="7">
+                        <input required type="number" class="form-control" id="moveInput" [(ngModel)]="moveInput"
+                            name="moveInput" #name="ngModel" value="1" min="1" max="7">
                         <button class="btn btn-outline-primary mr-1" type="button" (click)="move()">Move</button>
                     </div>
                 </div>
@@ -103,5 +104,5 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </form>

@@ -3,8 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { PawnService } from './pawn.service';
 import { direction, color, command } from './app-enum';
 import { Pawn } from './pawn';
-let h1: HTMLElement;
-let title = 'Test Tour of Heroes';
 describe('PawnService', () => {
   let service: PawnService;
 
